@@ -1,11 +1,12 @@
 import {injectable, /* inject, */ BindingScope, inject} from '@loopback/core';
 import {PasswordHasher} from '../types';
 import bcrypt from 'bcryptjs';
+import {AuthenticationServiceBindings} from '../BindingKeys';
 
 @injectable({scope: BindingScope.TRANSIENT})
 export class HashService implements PasswordHasher<string> {
   constructor(
-    @inject('rounds') private rounds: number
+    @inject(AuthenticationServiceBindings.ROUNDS) private rounds: number
   ) { }
   async hashPassword(passsword: string): Promise<string> {
     const salt = await bcrypt.genSalt(this.rounds);
@@ -14,5 +15,4 @@ export class HashService implements PasswordHasher<string> {
   async comparePassword(password: string, hash: string): Promise<boolean> {
     return await bcrypt.compare(password, hash);
   }
-
 }

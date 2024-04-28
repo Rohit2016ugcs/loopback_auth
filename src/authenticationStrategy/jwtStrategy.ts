@@ -2,9 +2,7 @@ import {AuthenticationStrategy} from '@loopback/authentication';
 import {service} from '@loopback/core';
 import {Request, RedirectRoute} from '@loopback/rest';
 import {UserProfile} from '@loopback/security';
-import {ParamsDictionary} from 'express-serve-static-core';
-import {ParsedQs} from 'qs';
-import {AuthenticationService, ErrorProvider, JwtService, errorProvider} from '../services';
+import { ErrorProvider, JwtService, errorProvider} from '../services';
 
 export class JwtStrategy implements AuthenticationStrategy {
   name: string = 'jwt';
