@@ -1,0 +1,18 @@
+{
+  "ids": {
+    "Product": 10
+  },
+  "models": {
+    "Product": {
+      "1": "{\"title\":\"One\",\"qty\":1,\"price\":1000,\"id\":1}",
+      "2": "{\"title\":\"Learn Nodejs\",\"qty\":1,\"price\":1000,\"id\":2}",
+      "3": "{\"title\":\"Learn Nodejs\",\"qty\":1,\"price\":1000,\"id\":3}",
+      "4": "{\"title\":\"Learn Nextjs\",\"qty\":34,\"price\":50,\"id\":4}",
+      "5": "{\"title\":\"this is title\",\"qty\":10,\"price\":20,\"id\":5}",
+      "6": "{\"title\":\"abc\",\"qty\":15,\"price\":40,\"id\":6}",
+      "7": "{\"title\":\"fgh\",\"qty\":5,\"price\":32,\"id\":7}",
+      "8": "{\"title\":\"new updated title\",\"qty\":31,\"id\":8,\"price\":31}",
+      "9": "{\"title\":\"new updated title\",\"qty\":31,\"price\":31,\"id\":9}"
+    }
+  }
+}
