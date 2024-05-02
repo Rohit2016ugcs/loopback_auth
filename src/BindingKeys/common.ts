@@ -3,7 +3,7 @@ import {HashService} from '../services';
 
 export namespace TokenServiceConstants {
   export const TOKEN_SECRET_VALUE = 'secret';
-  export const Token_Expires_In_Value = 60;
+  export const Token_Expires_In_Value = 600000;
 }
 
 export namespace TokenServiceBindings {

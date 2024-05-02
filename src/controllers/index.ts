@@ -7,3 +7,5 @@ export * from './department.controller';
 export * from './student-department.controller';
 export * from './student-address.controller';
 export * from './user.controller';
+export * from './admin.controller';
+export * from './job.controller';

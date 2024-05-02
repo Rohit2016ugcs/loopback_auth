@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import {ErrorProvider, errorProvider} from './error.service';
 import {TokenServiceBindings, TokenServiceConstants} from '../BindingKeys';
 import * as _ from 'lodash';
+import {MyUserProfile} from '../types';
 
 interface JwtInterface {
   generateToken(userProfile: UserProfile): Promise<string>
@@ -30,16 +31,17 @@ export class JwtService implements JwtInterface {
     }
   }
 
-  async verifyToken(token: string): Promise<UserProfile | undefined> {
+  async verifyToken(token: string): Promise<UserProfile | undefined | any> {
     if (!token) {
       throw this.errorService.authValidationFailure(
         `Error verifying token: 'token' is null`
       );
     }
-    let userProfile: UserProfile;
+    let userProfile: MyUserProfile;
     try {
       const decryptedToken = await jwt.verify(token, TokenServiceConstants.TOKEN_SECRET_VALUE);
-      userProfile = _.pick(decryptedToken, ['name']) as UserProfile;
+      userProfile = _.pick(decryptedToken, ['name', 'email', 'permissions']) as MyUserProfile;
+      return userProfile
     } catch (e) {
       throw this.errorService.authValidationFailure(`failed to verify token:- ${e}`)
     }

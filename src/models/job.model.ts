@@ -4,11 +4,11 @@ import {Entity, model, property} from '@loopback/repository';
   settings: {
     strict: false,
     mysql: {
-      table: 'user'
+      table: 'job'
     }
   }
 })
-export class User extends Entity {
+export class Job extends Entity {
   @property({
     type: 'number',
     id: true,
@@ -20,30 +20,7 @@ export class User extends Entity {
     type: 'string',
     required: true,
   })
-  email: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  password: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  firstName: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  lastName: string;
-
-  @property({
-    type: 'string'
-  })
-  permissions: string;
+  title: string;
 
   // Define well-known properties here
 
@@ -51,13 +28,13 @@ export class User extends Entity {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [prop: string]: any;
 
-  constructor(data?: Partial<User>) {
+  constructor(data?: Partial<Job>) {
     super(data);
   }
 }
 
-export interface UserRelations {
+export interface JobRelations {
   // describe navigational properties here
 }
 
-export type UserWithRelations = User & UserRelations;
+export type JobWithRelations = Job & JobRelations;

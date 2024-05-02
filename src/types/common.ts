@@ -1,8 +1,11 @@
+import {PermissionKeys} from '../enums';
+
 export type RegisterProps = {
   email: string;
   password: string;
   firstName: string;
   lastName: string;
+  permissions: string;
 }
 
 
@@ -17,3 +20,14 @@ export type LoginProps = {
   password: string;
 }
 
+export interface RequiredPermissions {
+  required: PermissionKeys
+}
+
+
+export interface MyUserProfile {
+  id: string;
+  email?: string;
+  name: string;
+  permissions: PermissionKeys
+}

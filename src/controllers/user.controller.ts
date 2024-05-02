@@ -10,6 +10,7 @@ import {AuthenticationService, ErrorProvider, HashService, JwtService, Validator
 import {PasswordHasherBindings} from '../BindingKeys';
 import {AuthenticationBindings, authenticate} from '@loopback/authentication';
 import {UserProfile} from '@loopback/security';
+import {PermissionKeys} from '../enums';
 
 // import {inject} from '@loopback/core';
 
@@ -73,6 +74,7 @@ export class UserController {
       throw this.errorService.emailValidationFailure()
     }
     try {
+      body.permissions = [PermissionKeys.AccessAuthFeature].join();
       const hashPassword = await this.hashService.hashPassword(password);
       const data = await this.userRepository.create({
         email: body.email,
@@ -126,7 +128,9 @@ export class UserController {
       const userProfile = await this.authenticationService.convertToUserProfile(user);
       const token = await this.jwtService.generateToken({
         email: user.email,
-        name: userProfile.name
+        name: userProfile.name,
+        permissions: user.permissions,
+        user
       })
       return {
         email,

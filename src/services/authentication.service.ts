@@ -32,7 +32,7 @@ export class AuthenticationService implements UserService<Partial<User>, LoginPr
     if (!passwordMatched) {
       throw this.errorService.authValidationFailure('incorrect credentials')
     }
-    return _.pick(user, ['email', 'firstName', 'lastName']);
+    return _.pick(user, ['email', 'firstName', 'lastName', 'permissions']);
   }
   convertToUserProfile(user: Partial<User>): UserProfile {
     const userName = (user.firstName ?? '') + (user.lastName ?? '');
